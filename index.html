@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    <title>Snake Game</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="game.js" defer></script>
+</head>
+
+<body>
+    <main class="game-container">
+        <h1>Snake Game</h1>
+
+        <section id="player-setup" class="player-setup">
+            <h2>Choose your nickname</h2>
+
+            <p>Your score will be saved using this name.</p>
+
+            <input id="nickname-input" type="text" maxlength="16" placeholder="Enter nickname" autocomplete="off">
+            <button id="start-player-button" type="button">Start Game</button>
+            <p id="nickname-error" role="alert"></p>
+        </section>
+
+        <section id="game-area" hidden>
+            <p>
+                Player:
+                <strong id="player-name"></strong>
+            </p>
+
+            <p>
+                Score:
+                <span id="score">0</span>
+                |
+                High Score:
+                <span id="high-score">0</span>
+            </p>
+
+            <p id="status-message">Press an arrow key to start</p>
+
+            <div class="game-layout">
+                <div class="play-column">
+                    <canvas
+                    id="game-board"
+                    width="600"
+                    height="600"
+                    ></canvas>
+
+                    <div class="game-actions">
+                    <button id="restart-button" type="button">
+                        Restart Game
+                    </button>
+
+                    <button id="change-player-button" type="button">
+                        Change Player
+                    </button>
+                    </div>
+                </div>
+
+                <section class="leaderboard">
+                    <h2>Global Leaderboard</h2>
+
+                    <div class="leaderboard-columns">
+                        <span>Rank</span>
+                        <span>Player</span>
+                        <span>Score</span>
+                    </div>
+
+                    <p id="leaderboard-status">
+                    Loading scores...
+                    </p>
+
+                    <ol id="leaderboard-list"></ol>
+                </section>
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+</html>
