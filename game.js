@@ -119,12 +119,10 @@ async function submitScore() {
 
     leaderboardStatus.textContent = "Submitting score...";
 
-    const { error } = await supabaseClient
-        .from("scores")
-        .insert({
-            player_name: playerNickname,
-            score: score
-        });
+    const { error } = await supabaseClient.rpc("submit_high_score", {
+        p_player_name: playerNickname,
+        p_score: score
+    });
 
     if (error) {
         console.error("Score submission failed:", error);
